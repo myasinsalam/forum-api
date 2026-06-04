@@ -1,0 +1,87 @@
+
+> forum-api@1.0.0 test
+> vitest --run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.17 [39m[90mC:/forum-api-submission[39m
+
+ [32m✓[39m src/Infrastructures/repository/_test/ReplyRepositoryPostgres.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 234[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/repository/_test/ThreadRepositoryPostgres.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 148[2mms[22m[39m
+ [31m❯[39m src/Infrastructures/http/_test/threads.test.js [2m([22m[2m20 tests[22m[2m | [22m[33m20 skipped[39m[2m)[22m[33m 376[2mms[22m[39m
+       [2m[90m↓[39m[22m should respond 201 and return addedThread
+       [2m[90m↓[39m[22m should respond 400 when missing payload
+       [2m[90m↓[39m[22m should respond 401 when no token
+       [2m[90m↓[39m[22m should respond 200 and return thread detail with comments and replies
+       [2m[90m↓[39m[22m should show **komentar telah dihapus** for deleted comments
+       [2m[90m↓[39m[22m should respond 404 when thread not found
+       [2m[90m↓[39m[22m should respond 201 and return addedComment
+       [2m[90m↓[39m[22m should respond 404 when thread not found
+       [2m[90m↓[39m[22m should respond 400 when missing content
+       [2m[90m↓[39m[22m should respond 401 when no token
+       [2m[90m↓[39m[22m should respond 200 when successfully deleted
+       [2m[90m↓[39m[22m should respond 403 when not owner
+       [2m[90m↓[39m[22m should respond 404 when comment not found
+       [2m[90m↓[39m[22m should respond 201 and return addedReply
+       [2m[90m↓[39m[22m should respond 404 when thread not found
+       [2m[90m↓[39m[22m should respond 404 when comment not found
+       [2m[90m↓[39m[22m should respond 400 when missing content
+       [2m[90m↓[39m[22m should respond 200 when successfully deleted
+       [2m[90m↓[39m[22m should respond 403 when not owner
+       [2m[90m↓[39m[22m should respond 404 when reply not found
+ [31m❯[39m src/Infrastructures/security/_test/BcryptEncryptionHelper.test.js [2m([22m[2m3 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 213[2mms[22m[39m
+       [32m✓[39m should encrypt password correctly[32m 95[2mms[22m[39m
+[31m       [31m×[31m should throw AuthenticationError if password not match[39m[32m 9[2mms[22m[39m
+[31m       [31m×[31m should not return AuthenticationError if password match[39m[32m 107[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/http/_test/createServer.test.js [2m([22m[2m21 tests[22m[2m)[22m[33m 1047[2mms[22m[39m
+ [31m❯[39m src/Infrastructures/repository/_test/CommentRepositoryPostgres.test.js [2m([22m[2m7 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 254[2mms[22m[39m
+[31m       [31m×[31m should persist comment and return AddedComment correctly[39m[32m 185[2mms[22m[39m
+       [32m✓[39m should throw NotFoundError when comment not found[32m 9[2mms[22m[39m
+       [32m✓[39m should not throw when comment exists[32m 16[2mms[22m[39m
+       [32m✓[39m should throw AuthorizationError when owner does not match[32m 10[2mms[22m[39m
+       [32m✓[39m should not throw when owner matches[32m 10[2mms[22m[39m
+       [32m✓[39m should set is_delete to true[32m 9[2mms[22m[39m
+       [32m✓[39m should return comments ordered by date[32m 12[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/repository/_test/UserRepositoryPostgres.test.js [2m([22m[2m8 tests[22m[2m)[22m[32m 159[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/repository/_test/AuthenticationRepositoryPostgres.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 133[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/security/_test/BcryptPasswordHash.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 97[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/RefreshAuthenticationUseCase.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/LogoutUserUseCase.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Infrastructures/security/_test/JwtTokenManager.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/GetThreadDetailUseCase.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/Domains/users/entities/_test/RegisterUser.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/DeleteAuthenticationUseCase.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/AddCommentUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/LoginUserUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/AddUserUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Domains/threads/entities/_test/AddedThread.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Domains/users/entities/_test/UserLogin.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Domains/users/entities/_test/RegisteredUser.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/DomainErrorTranslator.test.js [2m([22m[2m2 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Applications/security/_test/AuthenticationTokenManager.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/Domains/comments/_test/CommentRepository.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/Domains/threads/_test/ThreadRepository.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/AddReplyUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Domains/users/_test/UserRepository.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Domains/replies/entities/_test/AddedReply.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Domains/authentications/entities/_test/NewAuth.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/AddThreadUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/Applications/security/_test/PasswordHash.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Domains/authentications/_test/AuthenticationRepository.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/Domains/replies/_test/ReplyRepository.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/DeleteCommentUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/Domains/replies/entities/_test/NewReply.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Domains/comments/entities/_test/NewComment.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/Domains/threads/entities/_test/NewThread.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/NotFoundError.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Applications/use_case/_test/DeleteReplyUseCase.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/Domains/comments/entities/_test/AddedComment.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/InvariantError.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/AuthenticationError.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/AuthorizationError.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m src/Commons/exceptions/_test/ClientError.test.js [2m([22m[2m1 test[22m[2m)[22m[32m 4[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m41 passed[39m[22m[90m (44)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m123 passed[39m[22m[2m | [22m[33m20 skipped[39m[90m (146)[39m
+[2m   Start at [22m 13:09:34
+[2m   Duration [22m 8.48s[2m (transform 804ms, setup 947ms, import 4.12s, tests 2.98s, environment 14ms)[22m
+
