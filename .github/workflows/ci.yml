@@ -1,7 +1,10 @@
-name: CI
+name: CI/CD
 
 on:
   pull_request:
+    branches:
+      - main
+  push:
     branches:
       - main
 
@@ -55,3 +58,14 @@ jobs:
           ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
           REFRESH_TOKEN_KEY: ${{ secrets.REFRESH_TOKEN_KEY }}
           ACCCCESS_TOKEN_AGE: 3000
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Railway CLI
+        run: npm install -g
