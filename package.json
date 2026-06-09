@@ -4,8 +4,9 @@
   "description": "",
   "type": "module",
   "main": "index.js",
-  "scripts": {
+"scripts": {
     "start": "node src/app.js",
+    "start:prod": "npm run migrate up && node src/app.js",
     "start:dev": "nodemon src/app.js",
     "test": "vitest --run",
     "test:watch": "vitest --watch",
