@@ -58,3 +58,17 @@ jobs:
           ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
           REFRESH_TOKEN_KEY: ${{ secrets.REFRESH_TOKEN_KEY }}
           ACCCCESS_TOKEN_AGE: 3000
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to Railway
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"query":"mutation { deploymentTrigger(input: { serviceId: \"a5267495-61a9-4df6-9266-2797c06508e9\", environmentId: \"b1aa8d4d-e03d-4f38-b695-8b28efd7f6d2\" }) { id } }"}' \
+            https://backboard.railway.com/graphql/v2
