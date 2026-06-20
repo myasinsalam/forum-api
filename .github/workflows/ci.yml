@@ -65,10 +65,16 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
-      - name: Deploy to Railway
-        run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{"query":"mutation { deploymentTrigger(input: { serviceId: \"a5267495-61a9-4df6-9266-2797c06508e9\", environmentId: \"b1aa8d4d-e03d-4f38-b695-8b28efd7f6d2\" }) { id } }"}' \
-            https://backboard.railway.com/graphql/v2
+      - uses: actions/checkout@v3
+
+      - name: Deploy to GCP via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_HOST }}
+          username: ${{ secrets.GCP_USER }}
+          key: ${{ secrets.GCP_SSH_KEY }}
+          script: |
+            cd ~/forum-api
+            git pull origin main
+            npm install
+            pm2 restart forum-api
